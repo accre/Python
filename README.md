@@ -1,2 +1,2 @@
 # Python
-Example Python Scripts
+Example Python scripts to be run on the ACCRE cluster
