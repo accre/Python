@@ -1,7 +1,9 @@
 # How to run GPU jobs using using SLURM
-First, make your .bashrc and .theanorc look like the example ones included in this folder. Note that the lines for anaconda are unnecessary if you are using virtualenv.
+First, make your .theanorc look like the example ones included in this folder.
 
-Create a virtual environment. virtualenv and Anaconda both work, but we use virtualenv here.
+	cp example_theanorc.txt ~/.theanorc
+
+Now, you have two choices: 1) use the installed python packages, or 2) use a virtual environment (virtualenv or anaconda). Using a virtual environment is, in my opinion, easier if you have packages that you need to install. If you're using a virtualenv, first create one:
 
 	virtualenv venv
 
@@ -13,13 +15,18 @@ Install theano & its dependencies.
 
 	pip install theano
 
-If theano is already installed, you don't need to do this.
+If you're using the already installed packages, you don't need to do this.
 
 Next, make a SLURM file similar to the one attatched (slurm_example.slurm). This file specifies information about your task and the instructions for running.
 
-The instructions in our example script include activating your virtual environment and running the check.py script, which runs a simple job on the gpu:
+The instructions in our example script include specifying packages, activating your virtual environment and running the check.py script, which runs a simple job on the gpu:
 
-	source venv/bin/activate
+	setpkgs -a python3.4.2 # this includes theano
+	setpkgs -a cudnn7.0-v3
+	setpkgs -a cuda7.0
+
+	source venv/bin/activate # not needed if you are using installed packages only
+
 	python check.py
 
 Try running the included script with sbatch:

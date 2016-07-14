@@ -9,5 +9,8 @@
 #SBATCH --time=2:00:00
 #SBATCH --output=slurm_example.log
 
+setpkgs -a python3.4.2
+setpkgs -a cudnn7.0-v3
+setpkgs -a cuda7.0
 source venv/bin/activate
 python check.py
