@@ -12,4 +12,4 @@ source activate myenvironment
 # Set any other packages here, since source activate changes PATH
 
 # Execute the script
-python vectorization.py
+python vectorization_3_4.py
