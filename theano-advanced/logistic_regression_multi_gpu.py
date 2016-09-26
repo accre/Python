@@ -44,16 +44,17 @@ def f(shared_args,private_args):
     xent = -y * T.log(p_1) - (1-y) * T.log(1-p_1) # Cross-entropy loss function
     cost = xent.mean() + 0.01 * (w ** 2).sum()# The cost to minimize
     gw,gb = T.grad(cost, [w, b])              # Compute the gradient of the cost
-                                              # (we shall return to this in a
-                                              # following section of this tutorial)
 
-    # Compile.  allow_input_downcast reassures the compiler that we are ok using
-    # 64 bit floating point numbers on the cpu, gut only 32 bit floats on the gpu.
+    # Compile. allow_input_downcast reassures the compiler that we are ok using
+    # 64 bit floating point numbers on the cpu, 
+    # but only 32 bit floats on the gpu
     train = theano.function(
               inputs=[x,y],
               outputs=[prediction, xent],
-              updates=((w, w - 0.1 * gw), (b, b - 0.1 * gb)), allow_input_downcast=True)
-    predict = theano.function(inputs=[x], outputs=prediction, allow_input_downcast=True)
+              updates=((w, w - 0.1 * gw), (b, b - 0.1 * gb)), 
+              allow_input_downcast=True)
+    predict = theano.function(inputs=[x], outputs=prediction, 
+        allow_input_downcast=True)
 
     # Train
     for i in range(training_steps):

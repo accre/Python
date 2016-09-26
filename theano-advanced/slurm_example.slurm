@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --account=<my_group>_gpu
+#SBATCH --account=accre_gpu
 #SBATCH --partition=maxwell
 #SBATCH --gres=gpu:2
 #SBATCH --nodes=1
@@ -9,4 +9,6 @@
 
 source theano_env.sh theano_env
 
-python logistic_regression.py 
+python simple.py
+#python logistic_regression.py
+#python logistic_regression_multi_gpu.py
