@@ -1,0 +1,10 @@
+  [global]
+  floatX = float32
+  device = gpu1 
+  openmp = True
+
+  [nvcc]
+  fastmath = True
+
+  [cuda]
+  root = /usr/bin/cuda7.5/
