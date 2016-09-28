@@ -1,0 +1,30 @@
+name: lasagne_env
+dependencies:
+- cycler=0.10.0=py35_0
+- dill=0.2.5=py35_0
+- freetype=2.5.5=1
+- icu=54.1=0
+- libpng=1.6.22=0
+- matplotlib=1.5.3=np111py35_0
+- nomkl=1.0=0
+- numpy=1.11.1=py35_nomkl_0
+- openssl=1.0.2j=0
+- pip=8.1.2=py35_0
+- pyparsing=2.1.4=py35_0
+- pyqt=5.6.0=py35_0
+- python=3.5.2=0
+- python-dateutil=2.5.3=py35_0
+- pytz=2016.6.1=py35_0
+- qt=5.6.0=0
+- readline=6.2=2
+- scipy=0.18.1=np111py35_nomkl_0
+- setuptools=27.2.0=py35_0
+- sip=4.18=py35_0
+- six=1.10.0=py35_0
+- sqlite=3.13.0=0
+- tk=8.5.18=0
+- wheel=0.29.0=py35_0
+- xz=5.2.2=0
+- zlib=1.2.8=3
+prefix: /Users/joshuaarnold/anaconda2/envs/lasagne_env
+

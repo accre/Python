@@ -1,10 +1,9 @@
 SHELL := /bin/bash
 
 env: 
-	conda create -y -n $(MY_CONDA_ENV) python=3.5; 
+	conda env create -f "environment.yml" -n $(MY_CONDA_ENV) ; 
 
 install:
-	conda install nomkl scipy numpy; \
 	pip install --upgrade https://github.com/Theano/Theano/archive/master.zip;\
 	pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
 
