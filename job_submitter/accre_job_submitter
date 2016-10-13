@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+# @author: Rob Harrigan
+# Vanderbilt University
+
+import argparse
+import os
+import time
+import tempfile
+
+# TODO:
+#  nodelist, exclude list
+#  Allow for seperate output and error logs
+#  Allow different email types
+#  Support for adding different packages per job
+
+def parse_args():
+    t=str(int(time.time()))
+    parser = argparse.ArgumentParser(description="Submit jobs to the ACCRE slurm grid")
+    parser.add_argument("--command",nargs="+",help="command to be submitted",required=True)
+    parser.add_argument("--starting-dir",default=os.getcwd(),
+        help="Directory to start script in. Default=`pwd`",required=False)
+    parser.add_argument("--log-dir",default=os.path.join(os.getcwd(),"logs/"),
+        help="Directory to write log files to. Default=`pwd`/logs/",required=False)
+    parser.add_argument("--name",default="job_%s"%t,
+        help="Name for script. Default=current time",required=False)
+    parser.add_argument("--slurm-file",default=False,
+        help="File to save SLURM file to. Default=Don\'t save",required=False)
+    parser.add_argument("--memory",default="4G",
+        help="Memory required for the cluster. Default=4G",required=False)
+    parser.add_argument("--nodes",default=1,required=False,help="Number of nodes default=1")
+    parser.add_argument("--ntasks",default=1,required=False,help="Number of processes default=1")
+    parser.add_argument("--time",default='0-00:15:00', required=False, help="Amount of walltime to request in dd-hh:mm:ss")
+    parser.add_argument("--print-host-info",default=False,action="store_true",
+        required=False,help="Print out information about which machine you are on")
+    parser.add_argument("--dont-submit",default=False,action="store_true",
+        required=False,help="Don\'t submit the job. Just write the slurm file")
+    parser.add_argument("--group",default=None,required=False,
+        help="Which ACCRE group to use Default=None")
+    parser.add_argument("--print-time",default=False,action="store_true",
+        required=False,help="print the time at job begin and end")
+    parser.add_argument("--email",default=None,required=False,help="Email address, defualt=None")
+    #parser.add_argument("--emailtype",default=None,required=False,help="Email type: BEGIN, END, FAIL, REQUEUE or ALL")
+    #parser.add_argument("--packages",default=None,required=False,help="Comma separated list of packages to add")
+
+    args = parser.parse_args()
+    return args
+
+if __name__=="__main__":
+    args = parse_args()
+    memory = args.memory
+    name = args.name
+    starting_dir = args.starting_dir
+    log_out_name = os.path.join(os.path.abspath(args.log_dir),"%s.out" % name)
+    log_err_name = os.path.join(os.path.abspath(args.log_dir),"%s.err" % name)
+
+    if args.email is not None:
+        send_email=True
+    else:
+        send_email=False
+
+    submit = not args.dont_submit
+    cmd = " ".join(args.command)
+
+    lines = [
+    "#!/bin/bash",
+    "#SBATCH --nodes=%d" % int(args.nodes),
+    "#SBATCH --ntasks=%d" % int(args.ntasks),
+    "#SBATCH --mem=%s" % memory,
+    "#SBATCH --time=%s" % args.time,
+    "#SBATCH --output=%s" % log_out_name,
+    #"#SBATCH --error=%s" % log_err_name,
+    "#SBATCH --mail-user=%s"% args.email if send_email else None,
+    "#SBATCH --mail-type=ALL" if send_email else None,
+    "#SBATCH --job-name=%s" % name,
+    "#SBATCH --account=%s" % args.group if args.group else None,
+    "",
+    "function finish { " if args.print_time else None,
+    "echo \"\" && echo \"Runtime:\";" if args.print_time else None,
+    "times;}" if args.print_time else None,
+    "trap finish EXIT" if args.print_time else None,
+    "uname -a" if args.print_host_info else None,
+    "cd %s" % starting_dir,
+    cmd,
+    " ",
+    ""]
+
+    lines = filter(lambda x: x, lines) # remove None lines
+    f = open(os.path.abspath(args.slurm_file),"w",0) if args.slurm_file else tempfile.NamedTemporaryFile(delete=True,mode="w",bufsize=0)
+    f.write("\n".join(lines))
+    if submit:
+        os.system("sbatch %s" % f.name)
+    f.close()
