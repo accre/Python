@@ -1,5 +1,0 @@
-prepending /home/arnoldjr/.conda/envs/mpi4py_env/bin to PATH
-vmp1243
-/usr/spool/slurm/job10841586/slurm_script: line 15:  6510 Killed                  ./compute_pi.py
-Fri Oct 21 13:49:07 CDT 2016
-slurmstepd: error: Exceeded step memory limit at some point.
