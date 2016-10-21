@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 env: 
-	conda create -y -n $(MY_CONDA_ENV) python=3.5; 
+	conda create -y -n $(MY_CONDA_ENV) python=3.5 nose; 
 
 install:
 	conda install nomkl scipy numpy;

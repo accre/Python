@@ -14,24 +14,31 @@ FLOATX = theano.config.floatX
 rng = np.random
 
 # Create theano tensor variables
-x = T.vector('x')
-out = T.sin(x)
+x = T.dvector('x')
+out = T.sum(T.sin(x))
 
 # Create the symbolic graph
 f = theano.function([x], outputs=[out])
 
-# Compute the result
-with stopwatch("computing sine of all elements"):
-  g = f(rng.rand(2 ** 23).astype(FLOATX))
+# Create the host data
+x_data = rng.rand(2 ** 26).astype(FLOATX)
+
+with stopwatch("computing sum of sine of all elements"):
+  f = theano.function([x], outputs=T.sum(T.sin(x)))
+  sum_y0 = f(x_data)
+  print("%0.6f" % sum_y0)
 
 
 ## Solve a matrix equation 
 A = T.matrix('A')
 b = T.vector('b')
 out = T.dot(matrix_inverse(A), b)
-
 f = theano.function([A, b], out)
 
-N = 2048
+
+N = 2 ** 13
+A_host = rng.rand(N, N).astype(FLOATX)
+b_host = rng.rand(N).astype(FLOATX)
+
 with stopwatch("computing A inverse b"):
-  g = f(rng.rand(N, N).astype(FLOATX), rng.rand(N).astype(FLOATX))
+  g = f(A_host, b_host)

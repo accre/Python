@@ -1,0 +1,9 @@
+prepending /home/arnoldjr/.conda/envs/mpi4py_env/bin to PATH
+vmp1254
+Estimate of pi: 3.141749
+Total elapsed time for multi-threaded execution: 0.499023 s
+Estimate of pi: 3.141143
+Total elapsed time for single-threaded execution: 0.699736 s
+
+Speedup: 1.402212
+Fri Oct 21 14:56:52 CDT 2016
