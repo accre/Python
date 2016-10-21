@@ -1,5 +1,7 @@
 # threading 
-Demonstrates basic functionality of Python {}[threading] module in Python3.x. 
+Demonstrates basic functionality of Python 
+[threading](https://docs.python.org/3.5/library/threading.html) 
+module in Python3.x. 
 
 ## Getting started
 To load/create a conda environment and its (ACCRE) package dependencies:
