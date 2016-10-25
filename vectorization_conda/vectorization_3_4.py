@@ -3,25 +3,28 @@
 # Python 3.x script demonstrating vectorized execution
 #
 import numpy as np
-import time
+from timeit import timeit
 
-# 10 million entries
-t = np.linspace(-10,10,1000000)
+N = 10000
+nr = 100
+t = np.linspace(-10, 10, N)
 x1 = np.zeros(len(t))
 x2 = np.zeros(len(t))
 
-time1 = time.clock()
-# naive, non-vectorized implementation
-for i,ti in enumerate(t):
-    x1[i] = np.sin(ti)
-time2 = time.clock()
-print('%s: %0.2f seconds elapsed' % ("naive implementation", time2-time1))
+# native, naive, non-vectorized implementation
+def native():
+  for i in range(N):
+    x1[i] = np.sin(t[i])
+print("native    : %fs" % timeit("native()", number=nr, globals=globals()))
 
 # vectorized implementation
-time1 = time.clock()
-x2 = np.sin(t)
-time2 = time.clock()
-print('%s: %0.2f seconds elapsed' % ("vectorized implementation", time2-time1))
+def vectorized():
+  x2 = np.sin(t)
+
+print("vectorized: %fs" % timeit("vectorized()", number=nr, globals=globals()))
+
+native()
+vectorized()
 
 if ( np.array_equal(x1,x2) ):
     print("arrays equal!")
