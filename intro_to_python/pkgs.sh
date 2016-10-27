@@ -1,0 +1,1 @@
+setpkgs -a anaconda3

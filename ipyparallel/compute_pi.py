@@ -3,7 +3,8 @@
 import argparse
 from ipyparallel import Client
 import numpy as np
-from helpers import stopwatch
+import sympy
+from helpers import stopwatch, to_numeric
 import os
 
 
@@ -47,20 +48,24 @@ def main(profile, ntasks, niter):
 
   n = round(niter / ntasks)
 
-  results = views.apply_sync(worker_fun_2, n)
-  my_pi = 4. * sum(results) / (n * ntasks)
+  results = views.apply_sync(worker_fun, n)
+  my_pi = 4. * simpy.Ration(sum(results), (n * ntasks)).n(20)
 
-  print("Estimate of pi: %0.16f" % my_pi)
-  print("Actual pi:      %0.16f" % PI)
-  print("Percent error:  %0.16f" % np.abs(100. * (PI - my_pi) / PI))
+  with open(filename, "w") as f:
+    f.write("Estimate of pi: %0.16f\n" % my_pi)
+    f.write("Actual pi:      %0.16f\n" % PI)
+    f.write("Percent error:  %0.16f\n" % np.abs(100. * (PI - my_pi) / PI))
+
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
   parser.add_argument("-p", "--profile", type=str, required=True,
       help="Name of IPython profile to use")
-  parser.add_argument("-n", "--niter", type=int, required=True,
+  parser.add_argument("-n", "--niter", type=str, required=True,
       help="Number of stochastic iterations")
-  
+  parser.add_argument("-o", "--output", type=str, required=True,
+      help="Name of output file for writing")
+
   args = parser.parse_args()
 
-  main(args.profile, int(os.environ['SLURM_NTASKS']), args.niter)
+  main(args.profile, to_numeric(os.environ['SLURM_NTASKS']), to_numeric(args.niter))

@@ -1,11 +1,12 @@
 # threading 
 Demonstrates basic functionality of  
 [ipyparallel](https://ipyparallel.readthedocs.io/en/latest/) 
-module in Python3.x to perform parallel operations on multiple threads,
-possibly on multiple nodes
+module in Python3.x to perform parallel operations transparently 
+on multiple threads and/or multiple nodes
 
 Includes a test script to ensure that ipyparallel is working and a 
 `compute_pi.py` script illustrating estimating pi. 
+
 
 ## Getting started
 To load/create a conda environment and its (ACCRE) package dependencies:

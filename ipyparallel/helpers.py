@@ -15,3 +15,15 @@ def stopwatch(message,summary=None):
   print('Total elapsed time for %s: %f s' % (message, elapsed))
   if summary is not None:
     summary['elapsed'] = elapsed 
+
+
+def to_numeric(n):
+  try:
+    return int(n)
+  except ValueError:
+    try:
+      return int(float(n))
+    except:
+      raise
+  except:
+    raise
