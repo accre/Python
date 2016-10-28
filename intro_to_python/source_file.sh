@@ -12,7 +12,7 @@ fi
 
 # Sets a default value for the environment name if not present
 if [ -z "$1" ]; then
-    MY_NAME="intro_to_python_env"
+    MY_NAME="intro2python_env"
 else
     MY_NAME="$1"
 fi

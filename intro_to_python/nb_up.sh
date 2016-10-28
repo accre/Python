@@ -1,1 +1,1 @@
-jupyter notebook --no-browser --ip=* --port=8888 $1 
+jupyter notebook --no-browser --ip=* --port=8888 "$*" 

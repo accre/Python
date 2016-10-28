@@ -4,13 +4,25 @@ import threading
 import numpy as np
 from helpers import stopwatch
 
+
 def worker(result, index, num_elems):
-  """ thread worker function """
+  """ thread worker function 
+  
+  Thread functions do not return values, so instead one or more of the
+  input arguments must be modified.
+  
+  :param result: mutable array of floats
+  :param index: integer index of the result array
+  :param num_elems: number of elements to compute in this thread
+  :return None
+  """
   xy = np.random.rand(num_elems,2)  
   result[index] = 4 * np.mean(xy[:,0] ** 2 + xy[:,1] ** 2 < 1.0)
 
 
-if __name__ == "__main__":
+def main():
+  """ Computes pi in both single-threaded and multithreaded mode """
+
   threads = []
   num_threads = 16 
   n_per_thread = 1000000
@@ -40,3 +52,7 @@ if __name__ == "__main__":
     print("Estimate of pi: %f" % r_seq[0])
 
   print("\nSpeedup: %f" % (t1_summary['elapsed'] / t0_summary['elapsed']))
+
+
+if __name__ == "__main__":
+  main()
