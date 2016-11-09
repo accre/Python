@@ -1,0 +1,26 @@
+[fido@vmps11 ~]$ pip install requests
+Downloading/unpacking requests
+  Downloading requests-2.11.1-py2.py3-none-any.whl (514kB): 514kB downloaded
+Installing collected packages: requests
+Cleaning up...
+Exception:
+Traceback (most recent call last):
+  File "/usr/local/python3/3.4.2/x86_64/gcc46/nonet/lib/python3.4/site-packages/pip/basecommand.py", line 122, in main
+    status = self.run(options, args)
+  File "/usr/local/python3/3.4.2/x86_64/gcc46/nonet/lib/python3.4/site-packages/pip/commands/install.py", line 283, in run
+    requirement_set.install(install_options, global_options, root=options.root_path)
+  File "/usr/local/python3/3.4.2/x86_64/gcc46/nonet/lib/python3.4/site-packages/pip/req.py", line 1435, in install
+    requirement.install(install_options, global_options, *args, **kwargs)
+  File "/usr/local/python3/3.4.2/x86_64/gcc46/nonet/lib/python3.4/site-packages/pip/req.py", line 671, in install
+    self.move_wheel_files(self.source_dir, root=root)
+  File "/usr/local/python3/3.4.2/x86_64/gcc46/nonet/lib/python3.4/site-packages/pip/req.py", line 901, in move_wheel_files
+    pycompile=self.pycompile,
+  File "/usr/local/python3/3.4.2/x86_64/gcc46/nonet/lib/python3.4/site-packages/pip/wheel.py", line 215, in move_wheel_files
+    clobber(source, lib_dir, True)
+  File "/usr/local/python3/3.4.2/x86_64/gcc46/nonet/lib/python3.4/site-packages/pip/wheel.py", line 205, in clobber
+    os.makedirs(destdir)
+  File "/usr/local/python3/3.4.2/x86_64/gcc46/nonet/lib/python3.4/os.py", line 237, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/usr/local/python3/3.4.2/x86_64/gcc46/nonet/lib/python3.4/site-packages/requests'
+
+Storing debug log for failure in /home/fido/.pip/pip.log

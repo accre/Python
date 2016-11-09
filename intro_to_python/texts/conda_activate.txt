@@ -1,0 +1,3 @@
+[fido@vmps11 ~]$ setpkgs -a anaconda3
+[fido@vmps11 ~]$ source activate bar
+(bar) [fido@vmps11 ~]$ 

@@ -1,0 +1,8 @@
+(venv)[fido@vmps11 foo]$ which pip
+/gpfs22/home/fido/foo/venv/bin/pip
+(venv)[fido@vmps11 foo]$ pip list
+pip (7.1.2)
+setuptools (18.2)
+wheel (0.24.0)
+You are using pip version 7.1.2, however version 9.0.0 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.

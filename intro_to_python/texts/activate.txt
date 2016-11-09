@@ -1,0 +1,4 @@
+[fido@vmps11 ~]$ setpkgs -a anaconda3
+[fido@vmps11 ~]$ source activate intro_to_python_env
+prepending /home/fido/.conda/envs/intro_to_python_env/bin to PATH
+(intro_to_python_env) [fido@vmps11 ~]$ 

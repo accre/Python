@@ -1,0 +1,2 @@
+(bar) [fido@vmps11 ~]$ source deactivate
+[fido@vmps11 ~]$ 

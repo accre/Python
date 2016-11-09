@@ -21,17 +21,15 @@ def worker_fun_1(n=1000):
   return s 
 
 
-
 def worker_fun_2(n=1000):
   """ worker function """
   import numpy as np
 
-  chunksize = 1000000
-  num_chunks = max(n // chunksize, 1)
-  slop = n - num_chunks * chunksize
-  chunks = [chunksize] * num_chunks
-  if slop > 0:
-    chunks.append(slop)
+  chunksize = min(int(1e6), n)
+ 
+  num_chunks, remainder = divmod(num_elems, chunksize)
+  
+  chunks = [chunksize] * num_chunks + ([remainder] if remainder else [])
 
   s = 0
   for chunk in chunks:

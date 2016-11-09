@@ -1,0 +1,2 @@
+[fido@vmps11 ~]$ pip list | grep numpy
+numpy (1.9.1)

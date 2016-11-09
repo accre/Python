@@ -1,0 +1,12 @@
+[fido@vmps11 ~]$ pip list | grep virtual
+virtualenv (13.1.2)
+[fido@vmps11 ~]$ mkdir foo ; cd foo
+[fido@vmps11 foo]$ virtualenv venv
+Using base prefix '/usr/local/python3/3.4.2/x86_64/gcc46/nonet'
+New python executable in venv/bin/python3.4
+Also creating executable in venv/bin/python
+Installing setuptools, pip, wheel...done.
+[fido@vmps11 foo]$ ls
+venv
+[fido@vmps11 foo]$ which python
+/usr/local/python3/3.4.2/x86_64/gcc46/nonet/bin/python

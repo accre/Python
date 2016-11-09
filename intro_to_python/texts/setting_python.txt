@@ -1,0 +1,5 @@
+[fido@vmps11 ~]$ which python
+/usr/local/bin/python
+[fido@vmps11 ~]$ setpkgs -a python3.4.2
+[fido@vmps11 ~]$ which python
+/usr/local/python3/3.4.2/x86_64/gcc46/nonet/bin/python

@@ -1,0 +1,6 @@
+[fido@vmps11 foo]$ ls venv/bin/
+activate      activate.fish     easy_install      pip   pip3.4  python3    wheel
+activate.csh  activate_this.py  easy_install-3.4  pip3  python  python3.4
+[fido@vmps11 foo]$ source venv/bin/activate
+(venv)[fido@vmps11 foo]$ which python
+/gpfs22/home/fido/foo/venv/bin/python
