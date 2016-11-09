@@ -1,0 +1,14 @@
+/* center output pngs*/
+.output_png {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* Make ` ` code blocks look better than black text with white background */
+.rendered_html code.cm-s-ipython.language-accre {
+    background-color: black;
+    color: white;
+    font-size: 80%;
+}
