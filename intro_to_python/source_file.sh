@@ -18,7 +18,7 @@ else
 fi
 
 # Loads necessary ACCRE packages
-source pkgs.sh
+setpkgs -a anaconda3
 
 # Checks if environment name is valid and, if so, exports name
 if [[ "$MY_NAME" =~ ^[0-9A-Za-z_]+$ ]]; then
