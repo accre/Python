@@ -1,27 +1,11 @@
 
 # Working with Python on the ACCRE Cluster
 
-<div id="toc"></div>
+# Overview
 
+# Table of Contents
 
-```python
-%%javascript
-$.getScript('https://kmahelona.github.io/ipython_notebook_goodies/ipython_notebook_toc.js')
-```
-
-
-    <IPython.core.display.Javascript object>
-
-
-## Overview
-
-1. [Intro to Python](#Intro-to-Python)
-1. [Python versions on the cluster](#Python-versions-on-the-cluster)
-1. [Virtual environments](#Virtual-environments)
-1. [Anaconda](#Anaconda)
-1. [Jupyter notebooks](#Jupyter-notebooks)
-
-## Intro to Python
+# Intro to Python
 
 1. Assumes the programmer knows what she/he is doing!
 1. High-level language
@@ -348,7 +332,7 @@ print(bar)
     {'c': 5, 'b': 2, 'a': 1}
 
 
-## A note on Python2 v. Python3
+### A note on Python2 v. Python3
 
 1. If you have the choice, use Python3
 1. Python2 code can be transformed to Python3 code before integration into a project
@@ -361,7 +345,7 @@ print(bar)
     * `from __future__ import division`
    
 
-## Python versions on the cluster
+# Python versions on the cluster
 
 Note that `%%sh` is a Jupyter notebook *magic* command which invokes a shell environment. You will want to run this from a terminal session logged into the cluster as usual.
 
@@ -514,7 +498,7 @@ ls -l /usr/local/python*
     ls: cannot open directory /usr/local/python-modules: Permission denied
 
 
-## Virtual environments
+# Virtual environments
 
 ### What is a virtual environment?
 1. a means of keeping the dependencies required by different projects in separate places
@@ -578,9 +562,9 @@ ls -l /usr/local/python*
 ```
 
 
-## Anaconda
+# Anaconda
 
-### What is Anaconda?
+## What is Anaconda?
 1. package manager -> import code from others (don't reinvent the wheel)
 1. environment manager -> isolate projects and their **dependencies**
 1. Python distribution
@@ -588,13 +572,13 @@ ls -l /usr/local/python*
 1. platform-agnostic (Windows, OS X and Linux)
 1. free!
 
-### Why should I use Anaconda?
+## Why should I use Anaconda?
 1. Anaconda combines the functionality of `pip` and `virtualenv`
 1. Can create any available version of Python in its own environment!
 1. Allows installation of any package and resolves depencies automatically!!
 
 
-### How do I use Anaconda on the cluster?
+## How do I use Anaconda on the cluster?
 
 1. Initial Setup
     1. Set the anaconda ACCRE package 
@@ -605,8 +589,9 @@ ls -l /usr/local/python*
     1. Source the (existing) conda environment
     1. Execute Python code
 
-### Conda environment initial setup
+## Conda environments
 
+### Setup
 ```accre
 [fido@vmps11 ~]$ pkginfo | grep conda
                      anaconda2   Anaconda2 Python (2.7.8)
@@ -635,7 +620,7 @@ root                  *  /usr/local/python3/anaconda3
 
 *Note that Anaconda3 can run Python2 versions.*
 
-## Conda environment creation
+### Creation
 
 ```accre
 [fido@vmps11 ~]$ conda create --name bar python=2.7 dill
@@ -711,7 +696,7 @@ threading_env            /home/fido/.conda/envs/threading_env
 root                  *  /usr/local/python3/anaconda3
 ```
 
-## Conda environments must be activated
+### Conda environments must be activated
 
 Use `source activate <conda_env>`
 
@@ -738,7 +723,7 @@ wheel                     0.29.0                   py27_0
 zlib                      1.2.8                         3  
 ```
 
-## Search for available packages
+### Search for available packages
 
 ```accre
 (bar) [fido@vmps11 ~]$ conda search beautifulsoup
@@ -754,7 +739,7 @@ beautifulsoup4               4.4.0                    py27_0  defaults
                           .  4.5.1                    py35_0  defaults  
                         ```
 
-## Install a package into bar
+### Install a package into bar
 
 ```accre
 (bar) [fido@vmps11 ~]$ conda install beautifulsoup4
@@ -797,7 +782,7 @@ wheel                     0.29.0                   py27_0
 zlib                      1.2.8                         3  
 ```
 
-## Conda environments should be deactivated
+### Conda environments should be deactivated
 
 ```accre
 (bar) [fido@vmps11 ~]$ source deactivate
@@ -810,7 +795,7 @@ Since all conda environments are children of `/home` they are shared across the 
 
 *Avoid creating the environment within a SLURM script!!*
 
-## A typical SLURM batch script
+### A typical SLURM batch script
 ```bash
 #!/bin/bash
 
@@ -946,7 +931,7 @@ cat source_file.sh
     
 
 
-## Usage
+### Usage
 
 `source source_file.sh [my_env_name]`
 * First time, creates *my_env_name* or default
@@ -959,7 +944,7 @@ For example:
 (ipyparallel_env) [fido@vmps12 ipyparallel]$ 
 ```
 
-## Timing code 
+# Timing code 
 
 `timeit` module:
 1. in Python Standard Library
@@ -989,7 +974,7 @@ print("numpy:         %fs" % timeit('numpy.arange(0,100).sum()', number=N, setup
     numpy:         0.799985s
 
 
-## Numpy
+# Vectorization with numpy
 
 1. Analogous to Matlab
 1. Supports **vectorization** using compiled C++ code (can be much faster)
@@ -1024,7 +1009,7 @@ assert([ i * i for i in range(100)] == np.power(np.arange(100), 2).tolist())
     100000 loops, best of 3: 4.94 µs per loop
 
 
-## Multi-threaded jobs
+# Multi-threaded jobs
 
 * Execute on single node across multiple cores
 * Memory is shared across all threads
@@ -1153,7 +1138,7 @@ print("\nSpeedup: %f" % (t_single / t_multi))
     Speedup: 1.615063
 
 
-## Distributed Memory Jobs
+# Distributed Memory Jobs
 
 * Execute on multiple cores across one or more notes
 * Memory is specific to each task
@@ -1308,17 +1293,9 @@ if __name__ == "__main__":
       to_numeric(args.niter))
 ```
 
-## Some results
+# Jupyter notebooks
 
-
-
-```python
-
-```
-
-## Jupyter notebooks
-
-### What are Jupyter notebooks?
+## What are Jupyter notebooks?
 * Working coding document
 * Integrates Python code and markdown
 * Allows for inline plotting
@@ -1328,10 +1305,10 @@ if __name__ == "__main__":
     1. renders on GitHub
 * What this presentation is written in!
 
-### How do I use Jupyter notebooks?
-Option1: Download Anaconda locally, then `jupyter notebook` from the command line
+## How do I use Jupyter notebooks?
+### Option1: Download Anaconda locally, then `jupyter notebook` from the command line
 
-Option2. Use them on the cluster
+### Option2. Use them on the cluster
 * `setpkgs -a anaconda3`
 * `sbatch` or `salloc` to launch a job
 * Launch a notebook
@@ -1358,7 +1335,7 @@ Specific to IPython, primarily `jupyter console` and `jupyter notebook`
 
 [Built-in magic commands](https://ipython.org/ipython-doc/3/interactive/magics.html)
 
-## `timeit`
+###  `timeit`
 
 
 ```python
@@ -1391,7 +1368,7 @@ a = np.power(np.arange(100),2)
     100000 loops, best of 3: 7.57 µs per loop
 
 
-## `who`
+### `who`
 
 
 ```python
@@ -1456,7 +1433,7 @@ foo = Foo()
 
 
 
-## `history`
+### `history`
 
 
 ```python
@@ -1504,7 +1481,7 @@ foo = Foo()
       33: %history
 
 
-## `load`
+### `load`
 
 
 ```python
@@ -1544,7 +1521,7 @@ if ( np.array_equal(x1,x2) ):
 
 ```
 
-## `save`
+### `save`
 
 
 ```python
@@ -1569,7 +1546,7 @@ bar = 1234
     get_ipython().magic('who')
 
 
-## Plotting with matplotlib
+# Plotting with matplotlib
 
 * python 2D plotting library 
 * produces publication quality figures 
@@ -1577,7 +1554,7 @@ bar = 1234
 * platform agnostic
 * [examples](http://matplotlib.org/examples/index.html)
 
-### Import necessary packages
+## Import necessary packages
 
 
 ```python
@@ -1587,7 +1564,7 @@ import numpy as np
 import matplotlib.pylab as plt
 ```
 
-### An easier way
+## An easier way
 
 
 ```python
@@ -1601,7 +1578,7 @@ import matplotlib.pylab as plt
     `%matplotlib` prevents importing * from pylab and numpy
 
 
-### Examples
+## Examples
 
 
 ```python
@@ -1621,10 +1598,10 @@ plt.scatter(x,y)
 
 
 
-![png](WorkingWithPython_files/WorkingWithPython_145_1.png)
+![png](WorkingWithPython_files/WorkingWithPython_141_1.png)
 
 
-### Stylize
+## Stylize 
 
 
 ```python
@@ -1648,7 +1625,7 @@ matplotlib.rcParams['legend.fontsize'] = 10
 
 
 
-![png](WorkingWithPython_files/WorkingWithPython_148_1.png)
+![png](WorkingWithPython_files/WorkingWithPython_144_1.png)
 
 
 
@@ -1669,10 +1646,12 @@ plt.show()
 ```
 
 
-![png](WorkingWithPython_files/WorkingWithPython_149_0.png)
+![png](WorkingWithPython_files/WorkingWithPython_145_0.png)
 
 
-## github.com/accre/Python
+# Resources 
+
+Check out our [GitHub Repository](github.com/accre/Python)
 
 ![ACCRE Python github repo](images/ACCRE_Python_github.png)
 

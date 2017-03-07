@@ -1,0 +1,2 @@
+(venv)[fido@vmps11 foo]$ deactivate
+[fido@vmps11 foo]$ 
