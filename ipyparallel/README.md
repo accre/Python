@@ -1,4 +1,5 @@
-# threading 
+# ipyparallel 
+
 Demonstrates basic functionality of  
 [ipyparallel](https://ipyparallel.readthedocs.io/en/latest/) 
 module in Python3.x to perform parallel operations transparently 
@@ -11,7 +12,7 @@ Includes a test script to ensure that ipyparallel is working and a
 ## Getting started
 To load/create a conda environment and its (ACCRE) package dependencies:
 ```bash
-$ source source_file.sh [conda_enviroment_name]
+$ source job-env.sh [conda_enviroment_name]
 ```
 
 ### Batch mode
