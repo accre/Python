@@ -9,8 +9,8 @@
 source job-env.sh
 
 # Start the controller and engines 
-srun -l --multi-prog cluster.conf
-# -o slurm-%j-task-%t.out 
+srun -l --multi-prog cluster.conf &
+
 
 # Runs the application
 ${APP}

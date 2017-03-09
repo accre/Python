@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 # Creates the new conda environment
 env: 
-	conda create -n $(MY_CONDA_ENV) python=3.5 numpy sympy ;
+	conda env create -f environment.yml ;
 
 # Installs any pip only packages
 install:

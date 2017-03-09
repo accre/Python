@@ -46,8 +46,9 @@ fi
 ## Set additional environment variables
 
 # PROFILE should point to a network drive, otherwise, the JSON created
-# by ipcontroller needs to be copies to each host
-export PROFILE=/scratch/$USER/job_${SLURM_JOB_ID}_$(hostname)
+# by ipcontroller needs to be copies to each host.
+# The path provided here is stored in $HOME/.ipython/profile_/
+export PROFILE=job_${SLURM_JOB_ID}_$(hostname)
 echo "Creating profile ${PROFILE}"
 ipython profile create ${PROFILE}
 
@@ -63,4 +64,4 @@ echo -e $cluster_conf > cluster.conf
 OUTFILE=pi_estimate$(date +%Y%m%d_%H%M%S).txt
 echo Using output file $OUTFILE
 
-export APP="python compute_pi.py --profile ${PROFILE} -n 1e12 -o $OUTFILE" 
+export APP="python echo.py --profile ${PROFILE} -n 1e12 -o $OUTFILE" 
