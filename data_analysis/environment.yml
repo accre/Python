@@ -1,0 +1,22 @@
+name: data_analysis
+dependencies:
+- python=3.6
+- cython
+- dask
+- ipython
+- jupyter
+- notebook
+- ipyparallel
+- ipywidgets
+- jupyter_client
+- jupyter_core
+- line_profiler
+- numpy
+- pandas>=0.18.1
+- pip
+- scikit-learn>=0.18.1
+- scipy>=0.17.1
+- seaborn>=0.7.0
+- snakeviz
+- sympy
+- xlrd
