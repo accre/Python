@@ -7,7 +7,7 @@ one of the GPU nodes using:
 ```bash
 salloc --partition=maxwell --account=<mygroup_gpu> --time=0:30:00 --mem=2G --gres=gpu:1
 ```
-This demo has only been tested on the maxwell partiiton.
+*Note that keras will only execute on the maxwell partition at this time.*
 
 Substituting your group `_gpu` account name.
 
