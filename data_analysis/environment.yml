@@ -10,13 +10,17 @@ dependencies:
 - ipywidgets
 - jupyter_client
 - jupyter_core
+- jupyter_contrib_nbextensions
+- jupyter_nbextensions_configurator
 - line_profiler
+- nose_parameterized
 - numpy
 - pandas>=0.18.1
-- pip
 - scikit-learn>=0.18.1
 - scipy>=0.17.1
 - seaborn>=0.7.0
 - snakeviz
 - sympy
 - xlrd
+- pip:
+    - git+https://github.com/pymc-devs/pymc3.git#egg=pymc3
