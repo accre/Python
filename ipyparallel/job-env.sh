@@ -20,7 +20,7 @@ case $NARGS in
 esac
 
 # Loads necessary ACCRE packages
-setpkgs -a anaconda3
+module load Anaconda3
 
 # Checks if environment name is valid and, if so, exports name
 if [[ "$MY_NAME" =~ ^[0-9A-Za-z_]+$ ]]; then
