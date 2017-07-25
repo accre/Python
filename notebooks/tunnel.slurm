@@ -18,5 +18,5 @@ echo "ssh -L 9999:$HOSTNAME:$PORT $(whoami)@login.accre.vanderbilt.edu"
 printf '=%.0s' {1..80}
 echo
 
-setpkgs -a anaconda2
+module load Anaconda2
 jupyter notebook --no-browser --ip='*' --port=${PORT} Example.ipynb 

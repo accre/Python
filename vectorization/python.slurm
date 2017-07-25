@@ -5,6 +5,6 @@
 #SBATCH --mem=500M
 #SSBATCH --output=python_job_slurm.out
 
-setpkgs -a python2.7.8
+module load Anaconda2
 
 python < vectorization.py

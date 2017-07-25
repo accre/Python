@@ -6,7 +6,7 @@
 #SBATCH --output=python_job_slurm.out
 
 # Sets the anaconda package and activates the existing virtual environment.
-setpkgs -a anaconda3
+module load Anaconda3
 source activate myenvironment
 
 # Set any other packages here, since source activate changes PATH
