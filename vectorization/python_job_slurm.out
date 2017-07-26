@@ -1,0 +1,3 @@
+naive implementation: 11.45 seconds elapsed
+vectorized implementation: 0.15 seconds elapsed
+arrays equal!
