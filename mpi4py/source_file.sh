@@ -27,9 +27,9 @@ else
 fi
 
 # Loads necessary ACCRE packages
-setpkgs -a openmpi_1.10.2
-setpkgs -a anaconda3
-
+module load Anaconda3
+module load GCC
+module load OpenMPI
 
 # If the conda environment exists, then activates the environment
 # else creates the new conda environment with the Makefile

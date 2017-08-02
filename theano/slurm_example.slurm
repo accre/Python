@@ -9,8 +9,8 @@
 #SBATCH --time=2:00:00
 #SBATCH --output=slurm_example.log
 
-setpkgs -a python3.4.2
-setpkgs -a cudnn7.0-v3
-setpkgs -a cuda7.0
+module load Anaconda3 # this includes theano
+module load CUDA
+module load cuDNN
 source venv/bin/activate
 python check.py

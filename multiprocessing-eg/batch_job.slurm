@@ -7,7 +7,7 @@
 #SBATCH --mem=16G
 
 # Sets the anaconda3 package
-setpkgs -a anaconda3
+module load Anaconda3
 
 # Runs the program 
 python compute_pi.py -n 10000000

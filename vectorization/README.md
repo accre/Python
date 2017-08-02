@@ -3,5 +3,5 @@ to the ACCRE cluster by typing:
 
 	sbatch python.slurm
 
-from a cluster gateway. This job will run Python 2.7.8 on the
-vectorization.py file.
+from a cluster gateway. This job will run Python 2.7.12 on the
+`vectorization.py` file.

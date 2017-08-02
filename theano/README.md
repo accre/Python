@@ -21,9 +21,9 @@ Next, make a SLURM file similar to the one attatched (slurm_example.slurm). This
 
 The instructions in our example script include specifying packages, activating your virtual environment and running the check.py script, which runs a simple job on the gpu:
 
-	setpkgs -a python3.4.2 # this includes theano
-	setpkgs -a cudnn7.0-v3
-	setpkgs -a cuda7.0
+	module load Anaconda3 # this includes theano
+	module load CUDA
+	module load cuDNN
 
 	source venv/bin/activate # not needed if you are using installed packages only
 

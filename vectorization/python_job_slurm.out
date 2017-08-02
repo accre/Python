@@ -1,0 +1,3 @@
+native    : 11.139056s
+vectorized: 0.139282s
+arrays equal!

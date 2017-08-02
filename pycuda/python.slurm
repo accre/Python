@@ -8,9 +8,10 @@
 #SBATCH --mem=1G
 #SBATCH --output=python_job_slurm.out
 
-setpkgs -a anaconda3
+module load Anaconda3
 source activate pycuda
-setpkgs -a cuda7.0
-setpkgs -a boost
+module load CUDA
+module load GCC
+module load Boost
 
 python < pycuda_eg.py

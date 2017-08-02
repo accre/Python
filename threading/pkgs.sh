@@ -1,1 +1,1 @@
-setpkgs -a anaconda3
+module load Anaconda3
