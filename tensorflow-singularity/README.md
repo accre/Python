@@ -1,14 +1,11 @@
-# tensorflow
-
-NOTE: the recommended way to run Tensorflow on the ACCRE cluster is within a Singularity container. Please
-      refer to the tensorflow-singularity example within this repository for an example of how to accomplish
-      this.
+# tensorflow with singularity
 
 Tensorflow is Google's neural network and deep learning framework that can be imported as a Python pacakge. 
 
 Tensorflow is capable of running on NVIDIA GPUs, or on CPUs.
 
-This repo contains a very basic linear regression example.
+This repo illustrates how to run Tensorflow within a Singularity container on the ACCRE cluster. The image 
+is pulled from DockerHub.
 
 To run, just update the ```#SBATCH --account=``` line to point to your GPU group and submit using:
 
