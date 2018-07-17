@@ -1,6 +1,6 @@
 # tensorflow with singularity
 
-Tensorflow is Google's neural network and deep learning framework that can be imported as a Python pacakge. 
+Tensorflow is Google's neural network and deep learning framework that can be imported as a Python package. 
 
 Tensorflow is capable of running on NVIDIA GPUs, or on CPUs.
 
