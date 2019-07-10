@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --nodes=1
-#SBATCH --constraint=haswell
+#SBATCH --constraint=skylake
 #SBATCH --ntasks=1
 #SBATCH --time=00:10:00
 #SBATCH --mem=500M
